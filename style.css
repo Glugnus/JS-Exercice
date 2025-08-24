@@ -1,0 +1,278 @@
+/*
+  CSS minimal & propre pour les 20 exercices DOM
+  Tu n'as rien à modifier ici pour travailler le JS.
+*/
+
+:root {
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --text: #0f172a;
+  --muted: #64748b;
+  --primary: #6366f1;
+  --primary-600: #5457e0;
+  --success: #22c55e;
+  --danger: #ef4444;
+  --border: #e5e7eb;
+}
+
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell,
+    "Helvetica Neue", Arial;
+  color: var(--text);
+  background: var(--bg);
+}
+
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  width: 0%;
+  background: var(--primary);
+  z-index: 1000;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  padding: 16px;
+  border-bottom: 1px solid var(--border);
+  z-index: 10;
+}
+.site-header h1 {
+  margin: 0 0 4px;
+}
+.toc a {
+  margin-right: 8px;
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+.toc a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  max-width: 960px;
+  margin: 24px auto;
+  padding: 0 16px 64px;
+  display: grid;
+  gap: 16px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+.card h2 {
+  margin-top: 0;
+}
+
+.row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.mini-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 8px;
+}
+.mini-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+}
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 8px;
+}
+.list li {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: var(--primary);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+button:hover {
+  background: var(--primary-600);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="search"],
+input[type="number"],
+textarea {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 10px;
+  outline: none;
+}
+input:focus,
+textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+.hero {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+}
+.thumbs {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+.thumb {
+  width: 100px;
+  height: 60px;
+  object-fit: cover;
+  border: 2px solid transparent;
+  border-radius: 6px;
+}
+.thumb:hover {
+  border-color: var(--primary);
+}
+
+.box {
+  width: 120px;
+  height: 80px;
+  border-radius: 8px;
+  background: #e5e7eb;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+}
+.box.active {
+  outline: 3px dashed var(--primary);
+  background: #eef2ff;
+}
+
+.badge {
+  display: inline-block;
+  min-width: 24px;
+  text-align: center;
+  padding: 2px 6px;
+  border-radius: 999px;
+  background: #e2e8f0;
+}
+
+.error {
+  color: var(--danger);
+  min-height: 1.4em;
+  display: block;
+}
+.muted {
+  color: var(--muted);
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+.tab {
+  background: #e2e8f0;
+  color: #111827;
+}
+.tab.active {
+  background: var(--primary);
+  color: white;
+}
+.panels .panel {
+  display: none;
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+.panels .panel.active {
+  display: block;
+}
+
+/* Modal */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: grid;
+  place-items: center;
+}
+.overlay.hidden {
+  display: none;
+}
+.modal {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 420px;
+  width: 90%;
+}
+
+/* Accordéon */
+.acc-item + .acc-item {
+  margin-top: 6px;
+}
+.acc-header {
+  width: 100%;
+  text-align: left;
+  background: #f1f5f9;
+  color: #111827;
+}
+.acc-panel {
+  display: none;
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+.acc-item.open .acc-panel {
+  display: block;
+}
+
+/* Drag & drop */
+.draggable li {
+  user-select: none;
+}
+.draggable li.dragging {
+  opacity: 0.5;
+}
+
+/* Helper classes */
+.hidden {
+  display: none !important;
+}

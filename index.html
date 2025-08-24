@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Playground DOM – 20 exercices</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Barre de progression scroll (Exo 20) -->
+    <div id="scroll-progress" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <h1>Playground DOM</h1>
+      <p>Scaffold HTML pour pratiquer uniquement le JavaScript.</p>
+      <nav class="toc">
+        <a href="#exo-1">1</a><a href="#exo-2">2</a><a href="#exo-3">3</a>
+        <a href="#exo-4">4</a><a href="#exo-5">5</a><a href="#exo-6">6</a>
+        <a href="#exo-7">7</a><a href="#exo-8">8</a><a href="#exo-9">9</a>
+        <a href="#exo-10">10</a><a href="#exo-11">11</a
+        ><a href="#exo-12">12</a> <a href="#exo-13">13</a
+        ><a href="#exo-14">14</a><a href="#exo-15">15</a>
+        <a href="#exo-16">16</a><a href="#exo-17">17</a
+        ><a href="#exo-18">18</a> <a href="#exo-19">19</a
+        ><a href="#exo-20">20</a>
+      </nav>
+    </header>
+
+    <main class="container">
+      <!-- EXO 1: Sélection par id + changer le texte -->
+      <section id="exo-1" class="card">
+        <h2>Exercice 1 – Modifier un texte</h2>
+        <p id="ex1-text">Texte d’origine…</p>
+        <button id="ex1-btn">Changer le texte</button>
+        <!-- JS: document.getElementById('ex1-text').innerText = 'Nouveau texte' -->
+      </section>
+
+      <!-- EXO 2: Compter les éléments d'une classe -->
+      <section id="exo-2" class="card">
+        <h2>Exercice 2 – Compter les .mini-card</h2>
+        <div class="mini-grid">
+          <div class="mini-card">A</div>
+          <div class="mini-card">B</div>
+          <div class="mini-card">C</div>
+          <div class="mini-card">D</div>
+        </div>
+        <button id="ex2-btn">Combien de .mini-card ?</button>
+        <p id="ex2-output" class="muted"></p>
+        <!-- JS: document.querySelectorAll('.mini-card').length -->
+      </section>
+
+      <!-- EXO 3: Input live -> span -->
+      <section id="exo-3" class="card">
+        <h2>Exercice 3 – Miroir de saisie</h2>
+        <input id="ex3-input" type="text" placeholder="Tape ici…" />
+        <p>Tu as tapé: <span id="ex3-mirror">(rien)</span></p>
+        <!-- JS: input.addEventListener('input', ...) -->
+      </section>
+
+      <!-- EXO 4/5: Générer une liste UL depuis un tableau + boutons supprimer -->
+      <section id="exo-4" class="card">
+        <h2>Exercice 4 &amp; 5 – Créer une liste + supprimer un item</h2>
+        <div class="row">
+          <input id="ex4-new" type="text" placeholder="Nouvel élément" />
+          <button id="ex4-add">Ajouter</button>
+        </div>
+        <ul id="ex4-list" class="list"></ul>
+        <!-- JS: créer li + bouton .remove-btn qui supprime son parent li -->
+      </section>
+
+      <!-- EXO 6: Modal -->
+      <section id="exo-6" class="card">
+        <h2>Exercice 6 – Modal</h2>
+        <button id="ex6-open">Ouvrir le modal</button>
+        <div id="ex6-overlay" class="overlay hidden" aria-hidden="true">
+          <div
+            class="modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="ex6-title"
+          >
+            <h3 id="ex6-title">Bonjour 👋</h3>
+            <p>Ceci est un modal créé/contrôlé en JS.</p>
+            <button id="ex6-close">Fermer</button>
+          </div>
+        </div>
+        <!-- JS: enlever/ajouter .hidden sur #ex6-overlay -->
+      </section>
+
+      <!-- EXO 7: Toggle classe -->
+      <section id="exo-7" class="card">
+        <h2>Exercice 7 – Toggle de classe</h2>
+        <div id="ex7-box" class="box">Box</div>
+        <button id="ex7-toggle">Activer/Désactiver</button>
+        <!-- JS: element.classList.toggle('active') -->
+      </section>
+
+      <!-- EXO 8: Changer src image via vignettes -->
+      <section id="exo-8" class="card">
+        <h2>Exercice 8 – Galerie simple</h2>
+        <img
+          id="ex8-main"
+          class="hero"
+          src="https://picsum.photos/seed/1/600/300"
+          alt="image principale"
+        />
+        <div class="thumbs">
+          <img
+            class="thumb"
+            data-src="https://picsum.photos/seed/1/600/300"
+            src="https://picsum.photos/seed/1/100/60"
+            alt="mini 1"
+          />
+          <img
+            class="thumb"
+            data-src="https://picsum.photos/seed/2/600/300"
+            src="https://picsum.photos/seed/2/100/60"
+            alt="mini 2"
+          />
+          <img
+            class="thumb"
+            data-src="https://picsum.photos/seed/3/600/300"
+            src="https://picsum.photos/seed/3/100/60"
+            alt="mini 3"
+          />
+        </div>
+        <!-- JS: main.src = thumb.dataset.src -->
+      </section>
+
+      <!-- EXO 9: dataset -->
+      <section id="exo-9" class="card">
+        <h2>Exercice 9 – data-id</h2>
+        <div class="mini-grid" id="ex9-grid">
+          <div class="mini-card" data-id="101">Card 101</div>
+          <div class="mini-card" data-id="102">Card 102</div>
+          <div class="mini-card" data-id="103">Card 103</div>
+        </div>
+        <p id="ex9-output" class="muted"></p>
+        <!-- JS: e.target.dataset.id -->
+      </section>
+
+      <!-- EXO 10: Form validation -->
+      <section id="exo-10" class="card">
+        <h2>Exercice 10 – Validation de formulaire</h2>
+        <form id="ex10-form" novalidate>
+          <label
+            >Nom
+            <input id="ex10-name" type="text" required />
+          </label>
+          <small id="ex10-name-error" class="error"></small>
+
+          <label
+            >Email
+            <input id="ex10-email" type="email" required />
+          </label>
+          <small id="ex10-email-error" class="error"></small>
+
+          <button type="submit">Envoyer</button>
+        </form>
+        <!-- JS: preventDefault(); afficher erreurs sous les inputs -->
+      </section>
+
+      <!-- EXO 11: Tabs -->
+      <section id="exo-11" class="card">
+        <h2>Exercice 11 – Onglets (Tabs)</h2>
+        <div class="tabs" role="tablist">
+          <button class="tab active" data-target="#panel-1" role="tab">
+            Onglet 1
+          </button>
+          <button class="tab" data-target="#panel-2" role="tab">
+            Onglet 2
+          </button>
+          <button class="tab" data-target="#panel-3" role="tab">
+            Onglet 3
+          </button>
+        </div>
+        <div class="panels">
+          <div id="panel-1" class="panel active" role="tabpanel">Contenu 1</div>
+          <div id="panel-2" class="panel" role="tabpanel">Contenu 2</div>
+          <div id="panel-3" class="panel" role="tabpanel">Contenu 3</div>
+        </div>
+        <!-- JS: activer un onglet = ajouter .active au bouton + panel ciblé -->
+      </section>
+
+      <!-- EXO 12: Compteur -->
+      <section id="exo-12" class="card">
+        <h2>Exercice 12 – Compteur</h2>
+        <div class="counter">
+          <button id="ex12-dec">-</button>
+          <output id="ex12-value">0</output>
+          <button id="ex12-inc">+</button>
+          <button id="ex12-reset">Reset</button>
+        </div>
+      </section>
+
+      <!-- EXO 13: Navigation parent/sibling -->
+      <section id="exo-13" class="card">
+        <h2>Exercice 13 – Parent & Sibling</h2>
+        <div id="ex13-wrapper" class="row">
+          <div class="sibling">Frère 1</div>
+          <div id="ex13-target" class="sibling">Frère 2 (target)</div>
+          <div class="sibling">Frère 3</div>
+        </div>
+        <button id="ex13-btn">Styliser le prochain sibling</button>
+        <!-- JS: target.nextElementSibling.style... -->
+      </section>
+
+      <!-- EXO 14: Compter enfants + badge -->
+      <section id="exo-14" class="card">
+        <h2>Exercice 14 – Enfants & badge</h2>
+        <div id="ex14-container" class="mini-grid">
+          <div class="mini-card">1</div>
+          <div class="mini-card">2</div>
+          <div class="mini-card">3</div>
+        </div>
+        <p>Total éléments: <span id="ex14-badge" class="badge">0</span></p>
+      </section>
+
+      <!-- EXO 15: Template -->
+      <section id="exo-15" class="card">
+        <h2>Exercice 15 – Template</h2>
+        <template id="ex15-template">
+          <article class="product">
+            <img class="product-img" alt="" />
+            <h3 class="product-title"></h3>
+            <p class="product-price"></p>
+          </article>
+        </template>
+        <div id="ex15-target" class="grid"></div>
+        <!-- JS: template.content.cloneNode(true) puis remplir et append -->
+      </section>
+
+      <!-- EXO 16: DocumentFragment (100 éléments) -->
+      <section id="exo-16" class="card">
+        <h2>Exercice 16 – Fragment & performance</h2>
+        <button id="ex16-generate">Générer 100 items</button>
+        <ul id="ex16-list" class="list"></ul>
+      </section>
+
+      <!-- EXO 17: Accordéon -->
+      <section id="exo-17" class="card">
+        <h2>Exercice 17 – Accordéon</h2>
+        <div class="accordion" id="ex17-accordion">
+          <div class="acc-item">
+            <button class="acc-header">Section 1</button>
+            <div class="acc-panel">Contenu 1…</div>
+          </div>
+          <div class="acc-item">
+            <button class="acc-header">Section 2</button>
+            <div class="acc-panel">Contenu 2…</div>
+          </div>
+          <div class="acc-item">
+            <button class="acc-header">Section 3</button>
+            <div class="acc-panel">Contenu 3…</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- EXO 18: Recherche / filtrage -->
+      <section id="exo-18" class="card">
+        <h2>Exercice 18 – Filtrer des cartes</h2>
+        <input id="ex18-search" type="search" placeholder="Rechercher…" />
+        <div id="ex18-cards" class="mini-grid">
+          <div class="mini-card" data-title="javascript">JavaScript</div>
+          <div class="mini-card" data-title="css">CSS</div>
+          <div class="mini-card" data-title="html">HTML</div>
+          <div class="mini-card" data-title="react">React</div>
+          <div class="mini-card" data-title="node">Node</div>
+        </div>
+      </section>
+
+      <!-- EXO 19: Drag & Drop -->
+      <section id="exo-19" class="card">
+        <h2>Exercice 19 – Drag & Drop</h2>
+        <ul id="ex19-list" class="list draggable">
+          <li draggable="true">Élément A</li>
+          <li draggable="true">Élément B</li>
+          <li draggable="true">Élément C</li>
+        </ul>
+        <!-- JS: dragstart/dragover/drop pour réordonner -->
+      </section>
+
+      <!-- EXO 20: Progress bar scroll (déjà en haut) -->
+      <section id="exo-20" class="card">
+        <h2>Exercice 20 – Progress bar de scroll</h2>
+        <p>La barre fine en haut doit refléter le pourcentage de scroll.</p>
+      </section>
+    </main>
+
+    <!-- Place ton fichier JS d'exercices ici -->
+    <script src="script.js" defer></script>
+  </body>
+</html>
