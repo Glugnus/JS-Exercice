@@ -80,7 +80,7 @@ exo4List.addEventListener("click", (event) => {
 });
 
 function ajouterAListe() {
-  const value = exo4Input.value.trim();
+  const value = exo4Input.value;
   exo4Input.value = "";
   exo4Input.focus();
 
